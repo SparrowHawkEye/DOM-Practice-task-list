@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM Practice</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        width: 100vw;
+      }
+      .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: blueviolet;
+        height: 100vh;
+      }
+
+      .item-container {
+        background-color: bisque;
+        padding: 50px 60px;
+        border-radius: 10px;
+        box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.37);
+      }
+      .item-container h2 {
+        text-align: center;
+      }
+      #list-container {
+        padding: 15px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: 10px;
+      }
+      #task-input {
+        padding: 5px 15px;
+        margin-bottom: 15px;
+      }
+      #task-button {
+        border: none;
+        background: none;
+        cursor: pointer;
+        background-color: tomato;
+        padding: 10px 20px;
+        font-size: 18px;
+        font-weight: bold;
+        color: white;
+        box-shadow: 2px 0px 12px rgba(0, 0, 0, 0.37);
+        border-radius: 5px;
+        transition: all 0.3s;
+      }
+      #task-button:hover {
+        box-shadow: 5px 6px 3px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <section class="container">
+      <div class="item-container">
+        <h2>TODO list</h2>
+        <ol id="list-container">
+          <li class="item">Lorem, ipsum.</li>
+          <li class="item">Debitis, assumenda?</li>
+          <li class="item">Consectetur, nostrum.</li>
+          <li class="item">Dolorum, enim.</li>
+          <li class="item">Quos, consequatur.</li>
+        </ol>
+        <input id="task-input" type="text" placeholder="Add new task" /> <br />
+        <button id="task-button">Add Task</button>
+      </div>
+    </section>
+
+    <script>
+      const btn = document.getElementById("task-button");
+      const input = document.getElementById("task-input");
+      const listContainer = document.getElementById("list-container");
+      const items = document.getElementsByClassName("item");
+
+      btn.addEventListener("click", function () {
+        listContainer.appendChild(document.createElement("li")).innerText =
+          input.value;
+        input.value = "";
+      });
+
+      listContainer.addEventListener("click", function (event) {
+        event.target.parentNode.removeChild(event.target);
+      });
+    </script>
+  </body>
+</html>
