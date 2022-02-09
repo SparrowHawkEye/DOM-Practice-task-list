@@ -79,21 +79,6 @@
       </div>
     </section>
 
-    <script>
-      const btn = document.getElementById("task-button");
-      const input = document.getElementById("task-input");
-      const listContainer = document.getElementById("list-container");
-      const items = document.getElementsByClassName("item");
-
-      btn.addEventListener("click", function () {
-        listContainer.appendChild(document.createElement("li")).innerText =
-          input.value;
-        input.value = "";
-      });
-
-      listContainer.addEventListener("click", function (event) {
-        event.target.parentNode.removeChild(event.target);
-      });
-    </script>
+    <script src="./script.js"></script>
   </body>
 </html>
